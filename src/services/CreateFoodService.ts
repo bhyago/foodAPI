@@ -1,8 +1,10 @@
 /* eslint-disable class-methods-use-this */
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
+import { format } from 'date-fns'
 
+import AppError from '../errors/AppError';
 import Food from '../models/food';
-import FoodRepository from '../repositories/FoodRepository';
+// import FoodRepository from '../repositories/FoodRepository';
 
 interface RequestDTO {
   name: string;
@@ -22,12 +24,13 @@ class CreateFoodService {
     texture,
     expiredDate,
   }: RequestDTO): Promise<Food> {
-    const foodRepository = getCustomRepository(FoodRepository);
+    const foodRepository = getRepository(Food);
 
-    const findExpiredFoodDate = await foodRepository.findByDate(expiredDate);
+    const currentDate = format(new Date(), 'ddMMyyyy')
+    const informatedDate = format(expiredDate, 'ddMMyyyy')
 
-    if (findExpiredFoodDate) {
-      throw Error('It is not possible to register expired foods');
+    if (informatedDate <= currentDate) {
+      throw new AppError('It is not possible to register expired foods', 401);
     }
 
     const food = foodRepository.create({

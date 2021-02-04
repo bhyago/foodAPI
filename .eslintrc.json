@@ -1,7 +1,8 @@
 {
     "env": {
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
       "airbnb-base",
@@ -27,7 +28,11 @@
         }
       ],
       "prettier/prettier": "error",
-      "@typescript-eslint/camelcase": "off"
+      "@typescript-eslint/camelcase": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars":["error", {
+        "argsIgnorePattern": "_"
+      }]
     },
     "settings": {
       "import/resolver": {

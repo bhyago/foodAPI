@@ -1,7 +1,8 @@
-import { getCustomRepository } from 'typeorm';
+import { getRepository, MongoRepository } from 'typeorm';
 
+import AppError from '../errors/AppError';
 import Food from '../models/food';
-import FoodRepository from '../repositories/FoodRepository';
+// import FoodRepository from '../repositories/FoodRepository';
 
 interface RequestDTO {
   id: string;
@@ -14,7 +15,6 @@ interface RequestDTO {
 }
 
 class UpdateFoodService {
-  // eslint-disable-next-line class-methods-use-this
   public async execute({
     id,
     name,
@@ -24,20 +24,20 @@ class UpdateFoodService {
     texture,
     expiredDate,
   }: RequestDTO): Promise<Food> {
-    const foodRepository = getCustomRepository(FoodRepository);
+    const foodRepository = getRepository(Food);
 
     const updateFood = await foodRepository.findOne(id);
 
     if (!updateFood) {
-      throw new Error('id not found');
+      throw new AppError('id not found', 401);
     }
 
-    updateFood.name = name;
-    updateFood.amount = amount;
-    updateFood.weight = weight;
-    updateFood.taste = taste;
-    updateFood.texture = texture;
-    updateFood.expiredDate = expiredDate;
+    updateFood.name = name ? name : updateFood.name;
+    updateFood.amount = amount ? amount : updateFood.amount;
+    updateFood.weight = weight ? weight : updateFood.weight;
+    updateFood.taste = taste ? taste : updateFood.taste;
+    updateFood.texture = texture ? texture : updateFood.texture;
+    updateFood.expiredDate = expiredDate ? expiredDate : updateFood.expiredDate;
 
     return foodRepository.save(updateFood);
   }

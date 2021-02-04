@@ -6,17 +6,21 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --transpile-only --inspect --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.20",
     "@types/swagger-jsdoc": "^6.0.0",
     "@types/swagger-ui-express": "^4.1.2",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "ts-jest": "^26.5.0",
     "ts-node-dev": "^1.0.0-pre.57",
     "typescript": "^3.9.7"
   },
@@ -28,6 +32,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.14",
     "reflect-metadata": "^0.1.13",
