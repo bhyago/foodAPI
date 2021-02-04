@@ -1,0 +1,233 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "FOOD API",
+    "description": "API Rest para gerenciamento de alimetos de uma cozinha",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "contact": {
+      "name": "Arquivos facilitadores http insomilia",
+      "url":"https://github.com/bhyago"
+    }
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Local Dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Foods",
+      "description": "Gerenciamento de alimentos"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/foods": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Lista todos os alimentos registrados no sistema",
+        "responses": {
+          "200": {
+            "description": "OK. O recurso foi carregado e transmitido no corpo da mensagem.",
+            "schema": {
+              "$ref": "#/definitions/Foods"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Cria um novo registro de alimento no sistema",
+        "requestBody": {
+          "description": "Food Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Food"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. O recurso foi carregado e transmitido no corpo da mensagem.",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Falha!. O servidor não pode ou não irá processar a requisição devido a alguma coisa que foi entendida como um erro do cliente."
+          }
+        }
+      }
+    },
+    "/foods/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Requisições que podem ser feitas por passagem de parametros",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Busca um alimento pelo id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "ID do alimento que deseja pesquisar",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. O recurso foi carregado e transmitido no corpo da mensagem.",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          },
+          "404": {
+            "description": "Falha! Alimento não encontrado."
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza dados do alimendo passando o ID",
+        "tags": [
+          "Foods"
+        ],
+        "requestBody": {
+          "description": "Objeto padrão",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Food"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "ID do alimento que deseja atualizar",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. O recurso foi carregado e transmitido no corpo da mensagem.",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          },
+          "400": {
+            "description": "Falha! O servidor não pode ou não irá processar a requisição devido a alguma coisa que foi entendida como um erro do cliente."
+          },
+          "404": {
+            "description": "Falha! Alimento não encontrado."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta alimento passando o ID",
+        "tags": [
+          "Foods"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Passe o ID para deletar um alimento",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. O recurso foi carregado e transmitido no corpo da mensagem.",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "404": {
+            "description": "Falha! Alimento não encontrado."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "Food": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "taste": {
+          "type": "string"
+        },
+        "texture": {
+          "type": "string"
+        },
+        "expiredDate":"Date"
+      }
+    },
+    "Foods": {
+      "type": "object",
+      "properties": {
+        "foods": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Food"
+          }
+        }
+      }
+    }
+  }
+}
