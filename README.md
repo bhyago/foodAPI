@@ -16,7 +16,7 @@
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Food%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fbhyago%2FfoodAPI%2Fmain%2FInsomnia)
 
 ## Sobre o projeto
-Food api é uma api RESTFul para o gerenciamento de alimentos de uma cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
+Food api é uma api REST para o gerenciamento de = um inventário de cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
 
 ## Tecnologias
  - [TypeScript](https://www.typescriptlang.org/)
