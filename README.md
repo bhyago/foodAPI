@@ -7,15 +7,14 @@
 </p>
 
 <p align="center">
-  <a href="#sobre-o-gobarber">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#interface">Interface</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#documentações">Documentações</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
-## Sobre o Food API
-Food api é uma api REST para o gerenciamente de alimentos de uma cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
+## Sobre o projeto
+Food api é uma api REST para o gerenciamento de alimentos de uma cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
 
 ## Tecnologias
  - [TypeScript](https://www.typescriptlang.org/)
@@ -26,9 +25,10 @@ Food api é uma api REST para o gerenciamente de alimentos de uma cozinha. Com e
  - [ MongoDB]( https://www.mongodb.com/cloud/atlas )
 
   ## Documentações
-  ### Swagger
-  A documentação do swagger estará dispovivel no endereço abaixo assim que  a aplicação estiver no ar
- - [Swagger food API - http://localhost:3333/v1/apiDoc](http://localhost:3333/v1/apiDoc)
+  - Swagger
+  A documentação do swagger estará dispovivel no endereço abaixo assim que a aplicação estiver rodando.
+  ####Swagger food API
+ - [http://localhost:3333/v1/apiDoc](http://localhost:3333/v1/apiDoc)
   ### Como usar
    Para fazer o download do projeto abra o **```terminal```** e execute o comando abaixo:
   ```
