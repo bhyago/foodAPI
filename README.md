@@ -26,6 +26,9 @@ Food api é uma api REST para o gerenciamente de alimentos de uma cozinha. Com e
  - [ MongoDB]( https://www.mongodb.com/cloud/atlas )
 
   ## Documentações
+  ### Swagger
+  A documentação do swagger estará dispovivel no endereço abaixo assim que  a aplicação estiver no ar
+ - [Swagger food API - http://localhost:3333/v1/apiDoc](http://localhost:3333/v1/apiDoc)
   ### Como usar
    Para fazer o download do projeto abra o **```terminal```** e execute o comando abaixo:
   ```
