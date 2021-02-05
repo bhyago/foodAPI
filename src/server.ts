@@ -5,8 +5,9 @@ import 'express-async-errors';
 // import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import * as swaggerDocument from './swagger.json';
-import routes from './routes';
-import AppError from './errors/AppError';
+import routes from './http/routes';
+import AppError from './shared/errors/AppError';
+import './shared/containers';
 
 import './database';
 

@@ -1,12 +1,13 @@
 /* eslint-disable class-methods-use-this */
-import { getRepository } from 'typeorm';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+import { injectable, inject } from 'tsyringe';
 
-import AppError from '../errors/AppError';
+import AppError from '../shared/errors/AppError';
 import Food from '../models/food';
-// import FoodRepository from '../repositories/FoodRepository';
+import IFoodsRepository from '../repositories/IFoodsRepository';
 
-interface RequestDTO {
+interface IRequestDTO {
+  // id: string;
   name: string;
   amount: string;
   weight: string;
@@ -15,25 +16,36 @@ interface RequestDTO {
   expiredDate: Date;
 }
 
+@injectable()
 class CreateFoodService {
+  constructor(
+    @inject('FoodRepository')
+    private foodRepository: IFoodsRepository,
+  ) {}
+
   public async execute({
+    // id,
     name,
     amount,
     weight,
     taste,
     texture,
     expiredDate,
-  }: RequestDTO): Promise<Food> {
-    const foodRepository = getRepository(Food);
+  }: IRequestDTO): Promise<Food> {
+    // const listFoodId = await this.foodRepository.findById(id);
 
-    const currentDate = format(new Date(), 'ddMMyyyy')
-    const informatedDate = format(expiredDate, 'ddMMyyyy')
+    // if (!listFoodId) {
+    //   throw new AppError('food not found', 400);
+    // }
+
+    const currentDate = format(new Date(), 'ddMMyyyy');
+    const informatedDate = format(expiredDate, 'ddMMyyyy');
 
     if (informatedDate <= currentDate) {
       throw new AppError('It is not possible to register expired foods', 401);
     }
 
-    const food = foodRepository.create({
+    const food = await this.foodRepository.create({
       name,
       amount,
       weight,
@@ -41,8 +53,6 @@ class CreateFoodService {
       texture,
       expiredDate,
     });
-
-    await foodRepository.save(food);
 
     return food;
   }

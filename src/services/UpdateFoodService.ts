@@ -1,7 +1,8 @@
-import { getRepository, MongoRepository } from 'typeorm';
+import { injectable, inject } from 'tsyringe';
 
-import AppError from '../errors/AppError';
+import AppError from '../shared/errors/AppError';
 import Food from '../models/food';
+import IFoodsRepository from '../repositories/IFoodsRepository';
 // import FoodRepository from '../repositories/FoodRepository';
 
 interface RequestDTO {
@@ -14,7 +15,13 @@ interface RequestDTO {
   expiredDate: Date;
 }
 
+@injectable()
 class UpdateFoodService {
+  constructor(
+    @inject('FoodRepository')
+    private foodRepository: IFoodsRepository,
+  ) {}
+
   public async execute({
     id,
     name,
@@ -24,22 +31,20 @@ class UpdateFoodService {
     texture,
     expiredDate,
   }: RequestDTO): Promise<Food> {
-    const foodRepository = getRepository(Food);
-
-    const updateFood = await foodRepository.findOne(id);
+    const updateFood = await this.foodRepository.updateByid(id);
 
     if (!updateFood) {
       throw new AppError('id not found', 401);
     }
 
-    updateFood.name = name ? name : updateFood.name;
-    updateFood.amount = amount ? amount : updateFood.amount;
-    updateFood.weight = weight ? weight : updateFood.weight;
-    updateFood.taste = taste ? taste : updateFood.taste;
-    updateFood.texture = texture ? texture : updateFood.texture;
-    updateFood.expiredDate = expiredDate ? expiredDate : updateFood.expiredDate;
+    updateFood.name = name || updateFood.name;
+    updateFood.amount = amount || updateFood.amount;
+    updateFood.weight = weight || updateFood.weight;
+    updateFood.taste = taste || updateFood.taste;
+    updateFood.texture = texture || updateFood.texture;
+    updateFood.expiredDate = expiredDate || updateFood.expiredDate;
 
-    return foodRepository.save(updateFood);
+    return this.foodRepository.save(updateFood);
   }
 }
 

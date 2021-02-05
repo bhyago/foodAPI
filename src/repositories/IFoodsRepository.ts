@@ -1,5 +1,11 @@
 import Food from '../models/food';
+import ICreateFoodDTO from './dtos/ICreateFoodDTO';
 
 export default interface IFoodsRepository {
-  create(): Promise<Food>;
+  create(data: ICreateFoodDTO): Promise<Food>;
+  find(): Promise<Food[]>;
+  findById(id: string): Promise<Food | undefined>;
+  updateByid(id: string): Promise<Food | undefined>;
+  delete(food: Food): Promise<Food>;
+  save(food: Food): Promise<Food>;
 }
