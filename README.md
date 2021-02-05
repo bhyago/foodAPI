@@ -16,7 +16,7 @@
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Food%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fbhyago%2FfoodAPI%2Fmain%2FInsomnia)
 
 ## Sobre o projeto
-Food api é uma api REST para o gerenciamento de alimentos de uma cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
+Food api é uma api RESTFul para o gerenciamento de alimentos de uma cozinha. Com essa api é possivel cadastrar, consultar, modificar caracteristas e deletar alimentos.
 
 ## Tecnologias
  - [TypeScript](https://www.typescriptlang.org/)
@@ -27,18 +27,18 @@ Food api é uma api REST para o gerenciamento de alimentos de uma cozinha. Com e
  - [ MongoDB]( https://www.mongodb.com/cloud/atlas )
 
   ## Documentações
-  - Swagger
-  A documentação do swagger estará dispovivel no endereço abaixo assim que a aplicação estiver rodando.
-  ####Swagger food API
+   ### Swagger
+  A documentação do swagger estará disponível no endereço abaixo quando o aplicativo estiver em execução.
+  
  - [http://localhost:3333/v1/apiDoc](http://localhost:3333/v1/apiDoc)
   ### Como usar
    Para fazer o download do projeto abra o **```terminal```** e execute o comando abaixo:
   ```
-  git clone https://github.com/bhyago/go-barber-2.0.git
+  https://github.com/bhyago/foodAPI.git
   ```
 
   ## Pré-requisito
-:rotating_light:Esse projeto faz uso de algumas tecnologias obrigatorias para o fucionamento da aplicação. Antes de seguir em frente certifique-se de que o e **Nodejs** na versão **12.14.1** ou superios, esteja instalados no seu computador.
+:rotating_light:Esse projeto faz uso de algumas tecnologias obrigatorias para o fucionamento da aplicação. Antes de seguir em frente certifique-se de que o e **Nodejs** na versão **12.14.1** ou superior, esteja instalado no seu computador.
 
 - Instale o mongodb e configure seguindo as mesmas configurações do arquivo ``./foodapi/ormconfig``
 - A instalação pode ser feita no seu ambiente usando **Docker** ou **instalador**
@@ -59,9 +59,13 @@ Food api é uma api REST para o gerenciamento de alimentos de uma cozinha. Com e
 
 **Inicialização do servidor**
 
-  Para inicializar o servidor, no terminal execute o comando ``/backend``:
+  Para inicializar o servidor, no terminal execute o comando:
   ```
   yarn dev:server
+  ```
+  Para incializar os testes, no terminal execute o comando:
+  ```
+  yarn test
   ```
   Se desejar iniciar o servidor juntamente com **```degub```** do **```vscode```**, execute o seguinte comando:
   ```
