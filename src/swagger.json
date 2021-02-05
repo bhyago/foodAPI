@@ -7,10 +7,6 @@
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
-    },
-    "contact": {
-      "name": "Arquivos facilitadores http insomilia",
-      "url":"https://github.com/bhyago"
     }
   },
   "servers": [
@@ -44,6 +40,12 @@
             "schema": {
               "$ref": "#/definitions/Foods"
             }
+          },
+          "400": {
+            "description": "Falha!. O servidor não pode ou não irá processar a requisição devido a alguma coisa que foi entendida como um erro do cliente."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
           }
         }
       },
@@ -75,6 +77,9 @@
           },
           "400": {
             "description": "Falha!. O servidor não pode ou não irá processar a requisição devido a alguma coisa que foi entendida como um erro do cliente."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
           }
         }
       }
@@ -112,8 +117,11 @@
               "$ref": "#/definitions/Food"
             }
           },
-          "404": {
+          "400": {
             "description": "Falha! Alimento não encontrado."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
           }
         }
       },
@@ -154,8 +162,8 @@
           "400": {
             "description": "Falha! O servidor não pode ou não irá processar a requisição devido a alguma coisa que foi entendida como um erro do cliente."
           },
-          "404": {
-            "description": "Falha! Alimento não encontrado."
+          "500": {
+            "description": "Erro interno do servidor."
           }
         }
       },
@@ -182,8 +190,11 @@
               "$ref": "#/definitions/id"
             }
           },
-          "404": {
+          "400": {
             "description": "Falha! Alimento não encontrado."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
           }
         }
       }
@@ -201,21 +212,30 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": "Manga"
         },
         "amount": {
-          "type": "string"
+          "type": "string",
+          "default": "3"
+
         },
         "weight": {
-          "type": "string"
+          "type": "string",
+          "default": "5kg"
         },
         "taste": {
-          "type": "string"
+          "type": "string",
+          "default": "doce"
         },
         "texture": {
-          "type": "string"
+          "type": "string",
+          "default":"lisa"
         },
-        "expiredDate":"Date"
+        "expiredDate": {
+          "type": "string",
+          "default":"2021-02-20"
+        }
       }
     },
     "Foods": {
