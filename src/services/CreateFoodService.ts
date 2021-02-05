@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '../shared/errors/AppError';
-import Food from '../models/food';
+import Food from '../models/schemas/food';
 import IFoodsRepository from '../repositories/IFoodsRepository';
 
 interface IRequestDTO {
@@ -32,17 +32,11 @@ class CreateFoodService {
     texture,
     expiredDate,
   }: IRequestDTO): Promise<Food> {
-    // const listFoodId = await this.foodRepository.findById(id);
-
-    // if (!listFoodId) {
-    //   throw new AppError('food not found', 400);
-    // }
-
     const currentDate = format(new Date(), 'ddMMyyyy');
     const informatedDate = format(expiredDate, 'ddMMyyyy');
 
     if (informatedDate <= currentDate) {
-      throw new AppError('It is not possible to register expired foods', 401);
+      throw new AppError('It is not possible to register expired foods', 400);
     }
 
     const food = await this.foodRepository.create({

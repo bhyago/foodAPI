@@ -1,17 +1,12 @@
-/* eslint-disable no-shadow */
-/* eslint-disable class-methods-use-this */
 import { ObjectID } from 'typeorm';
-import { uuid } from 'uuidv4';
 import IFoodsRepository from '../IFoodsRepository';
 import ICreateFoodDTO from '../dtos/ICreateFoodDTO';
-import Food from '../../models/food';
+import Food from '../../models/schemas/food';
 
 class FoodRepository implements IFoodsRepository {
   private foods: Food[] = [];
 
   public async find(): Promise<Food[]> {
-    console.log(this.foods);
-
     return this.foods;
   }
 
@@ -22,7 +17,9 @@ class FoodRepository implements IFoodsRepository {
   }
 
   public async updateByid(id: string): Promise<Food | undefined> {
-    const food = this.foods.find(food => food.id === new ObjectID(id));
+    const food = this.foods.find(
+      foodUpdate => foodUpdate.id === new ObjectID(id),
+    );
 
     return food;
   }

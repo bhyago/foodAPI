@@ -1,4 +1,4 @@
-import Food from '../models/food';
+import Food from '../models/schemas/food';
 import ICreateFoodDTO from './dtos/ICreateFoodDTO';
 
 export default interface IFoodsRepository {

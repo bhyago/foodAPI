@@ -2,9 +2,11 @@ import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
-// import cors from 'cors';
+import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
+import { errors } from 'celebrate';
 import * as swaggerDocument from './swagger.json';
+
 import routes from './http/routes';
 import AppError from './shared/errors/AppError';
 import './shared/containers';
@@ -13,9 +15,12 @@ import './database';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-// app.use(cors());
 app.use(routes);
+
+app.use(errors());
+
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({

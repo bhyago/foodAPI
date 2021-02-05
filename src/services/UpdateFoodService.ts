@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '../shared/errors/AppError';
-import Food from '../models/food';
+import Food from '../models/schemas/food';
 import IFoodsRepository from '../repositories/IFoodsRepository';
 // import FoodRepository from '../repositories/FoodRepository';
 

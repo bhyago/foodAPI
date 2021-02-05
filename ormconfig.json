@@ -6,6 +6,6 @@
   "database": "foodbase",
   "useUnifiedTopology": true,
   "entities": [
-    "./src/models/*.ts"
+    "./src/models/schemas/*.ts"
   ]
 }

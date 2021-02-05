@@ -27,6 +27,7 @@
           "ts": "never"
         }
       ],
+      "class-methods-use-this": "off",
       "prettier/prettier": "error",
       "@typescript-eslint/camelcase": "off",
       "no-unused-vars": "off",

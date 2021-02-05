@@ -2,7 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 
 import IFoodsRepository from './IFoodsRepository';
 import ICreateFoodDTO from './dtos/ICreateFoodDTO';
-import Food from '../models/food';
+import Food from '../models/schemas/food';
 
 class FoodRepository implements IFoodsRepository {
   private ormRepository: Repository<Food>;
