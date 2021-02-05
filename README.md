@@ -28,7 +28,7 @@ Food api é uma api RESTFul para o gerenciamento de alimentos de uma cozinha. Co
 
   ## Documentações
    ### Swagger
-  A documentação do swagger estará disponível no endereço abaixo quando o aplicativo estiver em execução.
+  A documentação do swagger estará disponível no endereço abaixo quando a aplicatição estiver em execução.
   
  - [http://localhost:3333/v1/apiDoc](http://localhost:3333/v1/apiDoc)
   ### Como usar
