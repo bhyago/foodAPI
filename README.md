@@ -33,9 +33,10 @@ Food api é uma api REST para o gerenciamente de alimentos de uma cozinha. Com e
   ```
 
   ## Pré-requisito
-:rotating_light:Esse projeto faz uso de algumas tecnologias obrigatorias para o fucionamento da aplicação, antes de seguir em frente certifique-se que o **Docker** e **Nodejs** na versão **12.14.1** ou superios, estejam instalados no seu computador.
+:rotating_light:Esse projeto faz uso de algumas tecnologias obrigatorias para o fucionamento da aplicação. Antes de seguir em frente certifique-se de que o e **Nodejs** na versão **12.14.1** ou superios, esteja instalados no seu computador.
 
-- Instale o postgresSQL, mongodb com as mesmas configurações do arquivo ``./backend/ormconfig`` e redis com as configurações da variavel de ambiente no seu ambiente usando **Docker** ou **instalador**
+- Instale o mongodb e configure seguindo as mesmas configurações do arquivo ``./foodapi/ormconfig``
+- A instalação pode ser feita no seu ambiente usando **Docker** ou **instalador**
 
 
 **Instalando as Dependências**
@@ -50,10 +51,6 @@ Food api é uma api REST para o gerenciamente de alimentos de uma cozinha. Com e
   ```
   :rotating_light:**obs**:recomendamos que seja utilizado o **``yarn``**
 
-**Incializando as variaveis de ambiente**
-
-  Dentro do diretorio **``` ./backend/.env.example```**, altere os dados de acordo com a configuração das suas variaveis de ambiente e depois renomeie o arquivo para **```.env```**.
-  :rotating_light:**obs**:não é necessário preencher as variáveis da aws
 
 **Inicialização do servidor**
 
